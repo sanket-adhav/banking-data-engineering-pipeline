@@ -68,26 +68,70 @@ Business-ready aggregated datasets:
 ```
 banking-data-engineering-pipeline/
 ├── dashboards/
-│   ├── dashboard_screenshots/
-│   └── databricks_sql_queries/
+│ ├── dashboard_screenshots/
+│ │ ├── Dormant Account Count.png
+│ │ ├── High Value Transactions.png
+│ │ └── Total Transaction Amount Per Day.png
+│ └── databricks_sql_queries/
+│ ├── branch_performance.sql
+│ ├── daily_transactions.sql
+│ └── high_value_txn.sql
+│
 ├── data/
-│   ├── source/
-│   ├── bronze/
-│   ├── silver/
-│   └── gold/
+│ ├── source/
+│ │ ├── accounts/
+│ │ │ └── accounts.csv
+│ │ ├── customers/
+│ │ │ └── customers.csv
+│ │ └── transactions/
+│ │ └── transactions.csv
+│ ├── bronze/
+│ │ └── README.md
+│ ├── silver/
+│ │ └── README.md
+│ └── gold/
+│ └── README.md
+│
 ├── databricks/
-│   ├── bronze/
-│   ├── silver/
-│   └── gold/
+│ ├── bronze/
+│ │ ├── accounts_bronze.ipynb
+│ │ ├── customers_bronze.ipynb
+│ │ └── transactions_bronze.ipynb
+│ ├── silver/
+│ │ ├── accounts_silver.ipynb
+│ │ ├── customers_silver.ipynb
+│ │ └── transactions_silver.ipynb
+│ └── gold/
+│ ├── account_transaction_count.ipynb
+│ ├── dormant_accounts.ipynb
+│ ├── high_value_transactions.ipynb
+│ ├── total_balance_per_customer.ipynb
+│ └── total_transaction_amount_per_day.ipynb
+│
 ├── docs/
+│ ├── architecture.md
+│ ├── dashboard.md
+│ ├── data_model.md
+│ ├── pipeline_flow.md
+│ ├── runbook.md
+│ ├── security.md
+│ ├── storage_strategy.md
+│ └── validation.md
+│
 ├── sql/
-│   ├── schema.sql
-│   ├── validation_queries.sql
-│   └── data_quality_queries.sql
+│ ├── schema.sql
+│ ├── validation_queries.sql
+│ └── data_quality_queries.sql
+│
 ├── tests/
+│ └── data_quality_checks.sql
+│
 ├── workflows/
+│ └── databricks_jobs.json
+│
 ├── README.md
 └── requirements.txt
+
 ```
 
 ---
@@ -122,29 +166,34 @@ Data quality queries are available under:
 
 Databricks SQL dashboards are created on top of **Gold layer CSV datasets** to provide business and operational insights.
 
+## Dashboards
+
+Databricks SQL dashboards are created on top of **Gold layer CSV datasets** to provide business and operational insights.
+
 ### Dashboard: Banking Analytics Overview
 
 The following dashboards are included in this project and stored under `dashboards/dashboard_screenshots/`:
 
-* **Dormant Account Count**
-  Shows the total number of inactive (dormant) bank accounts.
+### Dormant Account Count
+Shows the total number of inactive (dormant) bank accounts.
 
-* **High Value Transactions**
-  Displays transactions above the defined threshold for risk and fraud monitoring.
+![Dormant Account Count](dashboards/dashboard_screenshots/Dormant_Account_Count.png)
 
-* **Total Transaction Amount Per Day**
-  Line chart showing daily transaction volume trends.
+---
 
-* **Top Customers by Total Balance**
-  Highlights customers with the highest account balances.
+### High Value Transactions
+Displays transactions above the defined threshold for risk and fraud monitoring.
 
-* **Most Active Accounts**
-  Shows accounts with the highest transaction counts.
+![High Value Transactions](dashboards/dashboard_screenshots/High%20Value%20Transactions.png)
 
-### Dashboard Artifacts
+---
 
-* Dashboard SQL queries: `dashboards/databricks_sql_queries/`
-* Dashboard screenshots: `dashboards/dashboard_screenshots/`
+### Total Transaction Amount Per Day
+Line chart showing daily transaction volume trends.
+
+![Total Transaction Amount Per Day](dashboards/dashboard_screenshots/Total%20Transaction%20Amount%20Per%20Day.png)
+
+---
 
 These dashboards demonstrate how curated gold data is consumed for analytics and decision-making.
 
@@ -167,12 +216,6 @@ These dashboards demonstrate how curated gold data is consumed for analytics and
 4. Run Gold Databricks notebooks
 5. Execute data quality validation queries
 6. Refresh Databricks SQL dashboards
-
----
-
-## Interview Summary
-
-Built an end-to-end banking data pipeline using AWS S3 and Databricks with a Bronze–Silver–Gold architecture, implemented data cleaning and validation, supported incremental processing, and delivered business insights through Databricks SQL dashboards.
 
 ---
 
