@@ -4,7 +4,7 @@
 
 This project implements an end-to-end **Banking Data Engineering pipeline** using **AWS S3** and **Databricks (Apache Spark)**. The pipeline follows a **Bronze → Silver → Gold** layered architecture and produces **business-ready datasets** that are visualized using **Databricks SQL dashboards**.
 
-All data in this project is processed and stored as **CSV files** in S3 (no Delta Lake, no Parquet).
+All data in this project is processed and stored as **CSV files** in S3.
 
 ---
 
@@ -221,5 +221,5 @@ These dashboards demonstrate how curated gold data is consumed for analytics and
 
 ## Author
 
-**Sanket Aba Adhav**
+**Sanket Adhav**
 Aspiring Data Engineer
